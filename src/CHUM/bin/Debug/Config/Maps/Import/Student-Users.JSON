@@ -1,0 +1,97 @@
+{
+  "IsUpdate": false,
+  "FieldMap": [
+    {
+      "DefaultData": null,
+      "TableFieldName": "ID",
+      "FileFieldname": "StudentID",
+      "IsIndex": true
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "First_Name",
+      "FileFieldname": "First_Name",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Last_Name",
+      "FileFieldname": "Last_Name",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Preferred_First_Name",
+      "FileFieldname": "Preferred_First_Name",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Preferred_Last_Name",
+      "FileFieldname": "Preferred_Last_Name",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "DOB",
+      "FileFieldname": "Date_Of_Birth",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Form_Class",
+      "FileFieldname": "Roll_Class",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Year_Level",
+      "FileFieldname": "Year_Level",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "UserName",
+      "FileFieldname": "UserName",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Sex",
+      "FileFieldname": "Sex",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Enrolment_Status",
+      "FileFieldname": "Enrolment_Status",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Date_Enrolled",
+      "FileFieldname": "Date_Enrolled",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "Exit_Date",
+      "FileFieldname": "Exit_Date",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": null,
+      "TableFieldName": "House",
+      "FileFieldname": "House",
+      "IsIndex": false
+    },
+    {
+      "DefaultData": 1,
+      "TableFieldName": "User_Type_ID",
+      "FileFieldname": null,
+      "IsIndex": false
+    }
+  ],
+  "TableType": "DAL.Database.Model.User, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "FileName": "Students.csv"
+}

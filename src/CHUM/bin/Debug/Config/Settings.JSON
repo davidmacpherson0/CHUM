@@ -1,0 +1,28 @@
+{
+  "ListOfSettings": [
+    {
+      "Data": ".\\Import",
+      "Name": "Import_Folder"
+    },
+    {
+      "Data": "student",
+      "Name": "File_Search_Students"
+    },
+    {
+      "Data": "class",
+      "Name": "File_Search_Class"
+    },
+    {
+      "Data": "timetable",
+      "Name": "File_Search_Timetable"
+    },
+    {
+      "Data": "<Server UNC path>",
+      "Name": "Remote_Import_Folder"
+    },
+    {
+      "Data": ".\\Export",
+      "Name": "Export_Folder"
+    }
+  ]
+}

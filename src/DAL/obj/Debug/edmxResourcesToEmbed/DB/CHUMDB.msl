@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CHUMModelStoreContainer" CdmEntityContainer="CHUMDB">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="CHUMModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="Class_Code" ColumnName="Class_Code" />
+          <ScalarProperty Name="Subject_Prefix" ColumnName="Subject_Prefix" />
+          <ScalarProperty Name="Year_Level" ColumnName="Year_Level" />
+          <ScalarProperty Name="Semeseter_ID" ColumnName="Semeseter_ID" />
+          <ScalarProperty Name="Class_Level" ColumnName="Class_Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes_Users_Bridge">
+      <EntityTypeMapping TypeName="CHUMModel.Classes_Users_Bridge">
+        <MappingFragment StoreEntitySet="Classes_Users_Bridge">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Classes_Class_Code" ColumnName="Classes_Class_Code" />
+          <ScalarProperty Name="Users_EQID" ColumnName="Users_EQID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="CHUMModel.Subject">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Type">
+      <EntityTypeMapping TypeName="CHUMModel.User_Type">
+        <MappingFragment StoreEntitySet="User_Type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CHUMModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="EQID" ColumnName="EQID" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Preferred_First_Name" ColumnName="Preferred_First_Name" />
+          <ScalarProperty Name="Preferred_Last_Name" ColumnName="Preferred_Last_Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Year_Level" ColumnName="Year_Level" />
+          <ScalarProperty Name="MISID" ColumnName="MISID" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Enrolment_Status" ColumnName="Enrolment_Status" />
+          <ScalarProperty Name="Date_Enrolled" ColumnName="Date_Enrolled" />
+          <ScalarProperty Name="Exit_Date" ColumnName="Exit_Date" />
+          <ScalarProperty Name="House" ColumnName="House" />
+          <ScalarProperty Name="Indigenous_Status" ColumnName="Indigenous_Status" />
+          <ScalarProperty Name="Independent_Status" ColumnName="Independent_Status" />
+          <ScalarProperty Name="User_Type_ID" ColumnName="User_Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

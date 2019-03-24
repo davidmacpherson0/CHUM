@@ -1,0 +1,7 @@
+{
+  "Table": "DAL.Database.Model.Classes_Users_Bridge, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "KeyNames": [
+    "Users_ID",
+    "Classes_Class_Code"
+  ]
+}

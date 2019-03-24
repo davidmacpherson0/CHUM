@@ -1,0 +1,28 @@
+{
+  "Files": [
+    {
+      "Paramaters": [
+        {
+          "Data": "Teacher",
+          "Name": "User_Type"
+        }
+      ],
+      "ShowHeader": false,
+      "QuoteNoFields": false,
+      "FileName": "Clickview-Staff.csv"
+    },
+    {
+      "Paramaters": [
+        {
+          "Data": "Student",
+          "Name": "User_Type"
+        }
+      ],
+      "ShowHeader": false,
+      "QuoteNoFields": false,
+      "FileName": "Clickview-Student.csv"
+    }
+  ],
+  "Folder": "ClickView",
+  "ExportTemplate": "DAL.Export.Templates.ClickView, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+}

@@ -1,0 +1,31 @@
+﻿using Prism.Modularity;
+using Prism.Unity;
+using System.Windows;
+//using Microsoft.Practices.Unity;
+
+namespace CHUM
+{
+    internal class Bootstrapper : UnityBootstrapper
+    {
+        protected override IModuleCatalog CreateModuleCatalog()
+        {
+            return new ConfigurationModuleCatalog();
+        }
+
+
+        protected override DependencyObject CreateShell()
+        {
+
+            return Container.TryResolve<MainWindow>();
+        }
+
+        protected override void InitializeShell()
+        {
+            base.InitializeShell();
+            App.Current.MainWindow = (Window)this.Shell;
+            App.Current.MainWindow.Show();
+
+        }
+
+    }
+}

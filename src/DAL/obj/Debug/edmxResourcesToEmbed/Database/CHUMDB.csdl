@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CHUMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Class_Code" />
+    </Key>
+    <Property Name="Class_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject_Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Year_Level" Type="Int64" />
+    <Property Name="Semeseter_ID" Type="Int64" />
+    <Property Name="Class_Level" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Classes_0_0" FromRole="Classes" ToRole="Subjects" />
+    <NavigationProperty Name="Classes_Users_Bridge" Relationship="Self.FK_Classes_Users_Bridge_1_0" FromRole="Classes" ToRole="Classes_Users_Bridge" />
+  </EntityType>
+  <EntityType Name="Classes_Users_Bridge">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Classes_Class_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Users_EQID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class" Relationship="Self.FK_Classes_Users_Bridge_1_0" FromRole="Classes_Users_Bridge" ToRole="Classes" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Classes_Users_Bridge_0_0" FromRole="Classes_Users_Bridge" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Prefix" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_0_0" FromRole="Subjects" ToRole="Classes" />
+  </EntityType>
+  <EntityType Name="User_Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Label" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_0_0" FromRole="User_Type" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="EQID" />
+    </Key>
+    <Property Name="EQID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="First_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Preferred_First_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Preferred_Last_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" />
+    <Property Name="Year_Level" Type="Int64" />
+    <Property Name="MISID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Enrolment_Status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Enrolled" Type="DateTime" />
+    <Property Name="Exit_Date" Type="DateTime" />
+    <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Indigenous_Status" Type="Int64" />
+    <Property Name="Independent_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="User_Type_ID" Type="Int64" />
+    <NavigationProperty Name="Classes_Users_Bridge" Relationship="Self.FK_Classes_Users_Bridge_0_0" FromRole="Users" ToRole="Classes_Users_Bridge" />
+    <NavigationProperty Name="User_Type" Relationship="Self.FK_Users_0_0" FromRole="Users" ToRole="User_Type" />
+  </EntityType>
+  <Association Name="FK_Classes_0_0">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Prefix" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="Subject_Prefix" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Users_Bridge_1_0">
+    <End Role="Classes" Type="Self.Class" Multiplicity="0..1" />
+    <End Role="Classes_Users_Bridge" Type="Self.Classes_Users_Bridge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="Class_Code" />
+      </Principal>
+      <Dependent Role="Classes_Users_Bridge">
+        <PropertyRef Name="Classes_Class_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Users_Bridge_0_0">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Classes_Users_Bridge" Type="Self.Classes_Users_Bridge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="EQID" />
+      </Principal>
+      <Dependent Role="Classes_Users_Bridge">
+        <PropertyRef Name="Users_EQID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_0_0">
+    <End Role="User_Type" Type="Self.User_Type" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="User_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CHUMDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Classes_Users_Bridge" EntityType="Self.Classes_Users_Bridge" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="User_Type" EntityType="Self.User_Type" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Classes_0_0" Association="Self.FK_Classes_0_0">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Users_Bridge_1_0" Association="Self.FK_Classes_Users_Bridge_1_0">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Classes_Users_Bridge" EntitySet="Classes_Users_Bridge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Users_Bridge_0_0" Association="Self.FK_Classes_Users_Bridge_0_0">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Classes_Users_Bridge" EntitySet="Classes_Users_Bridge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_0_0" Association="Self.FK_Users_0_0">
+      <End Role="User_Type" EntitySet="User_Type" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

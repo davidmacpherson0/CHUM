@@ -1,0 +1,48 @@
+{
+  "Files": [
+    {
+      "Paramaters": [
+        {
+          "Data": "<School Domain>",
+          "Name": "Institution"
+        },
+		{
+          "Data": "Password",
+          "Name": "TeacherPassword"
+        },
+		{
+          "Data": "readcloud",
+          "Name": "Password"
+        },
+        {
+          "Name": "FilterStudents",
+		  "Data": true
+        },
+		        {
+          "Name": "FilterClasses",
+		  "Data": false
+        },
+		{
+          "Name": "FilterTeachers",
+		  "Data": false
+        } ,
+		{
+          "Name": "ModifyClassCodes",
+		  "Data": 
+            {"Type":"Remove",
+			"Position": 5 ,
+			"count":1}
+		},
+		{
+			"Name": "NotThisClassName",
+			"Data": "Roll Class"
+		}
+		],
+      "ShowHeader": false,
+      "QuoteNoFields": true,
+      "FileName": "Readcloud.csv"
+    }
+  ],
+  "Folder": "ReadCloud",
+  "ExportTemplate": "DAL.Export.Templates.ReadCloud, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+}

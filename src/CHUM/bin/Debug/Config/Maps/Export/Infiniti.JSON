@@ -1,0 +1,36 @@
+{
+  "Files": [
+    {
+      "Paramaters": [
+        {
+          "Data": "Student",
+          "Name": "User_Type"
+        },
+        {
+          "Data": "Password",
+          "Name": "Default_Password"
+        }
+      ],
+      "ShowHeader": true,
+      "QuoteNoFields": false,
+      "FileName": "Infiniti-Student.csv"
+    },
+    {
+      "Paramaters": [
+        {
+          "Data": "Teacher",
+          "Name": "User_Type"
+        },
+        {
+          "Data": "Password",
+          "Name": "Default_Password"
+        }
+      ],
+      "ShowHeader": true,
+      "QuoteNoFields": false,
+      "FileName": "Infiniti-Staff.csv"
+    }
+  ],
+  "Folder": "Infiniti",
+  "ExportTemplate": "DAL.Export.Templates.Infiniti, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+}

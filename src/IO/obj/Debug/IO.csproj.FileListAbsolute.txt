@@ -1,0 +1,5 @@
+D:\--Projects--\--Development--\Exporter\CHUM\CHUM\bin\Debug\IO.dll
+D:\--Projects--\--Development--\Exporter\CHUM\CHUM\bin\Debug\IO.pdb
+D:\--Projects--\--Development--\Exporter\CHUM\IO\obj\Debug\IO.csprojResolveAssemblyReference.cache
+D:\--Projects--\--Development--\Exporter\CHUM\IO\obj\Debug\IO.dll
+D:\--Projects--\--Development--\Exporter\CHUM\IO\obj\Debug\IO.pdb

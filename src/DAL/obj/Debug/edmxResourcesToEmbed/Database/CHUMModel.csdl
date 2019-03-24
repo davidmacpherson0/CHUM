@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CHUMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CHUMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="CHUMModel.Class" />
+    <EntitySet Name="Classes_Users_Bridge" EntityType="CHUMModel.Classes_Users_Bridge" />
+    <EntitySet Name="Subjects" EntityType="CHUMModel.Subject" />
+    <EntitySet Name="User_Type" EntityType="CHUMModel.User_Type" />
+    <AssociationSet Name="FK_Classes_0_0" Association="CHUMModel.FK_Classes_0_0">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="Class" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Classes_Users_Bridge_1_0" Association="CHUMModel.FK_Classes_Users_Bridge_1_0">
+      <End Role="Class" EntitySet="Classes" />
+      <End Role="Classes_Users_Bridge" EntitySet="Classes_Users_Bridge" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="CHUMModel.User" />
+    <AssociationSet Name="FK_Classes_Users_Bridge_0_0" Association="CHUMModel.FK_Classes_Users_Bridge_0_0">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Classes_Users_Bridge" EntitySet="Classes_Users_Bridge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_0_0" Association="CHUMModel.FK_Users_0_0">
+      <End Role="User_Type" EntitySet="User_Type" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="Class_Code" />
+    </Key>
+    <Property Name="Class_Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Subject_Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Year_Level" Type="Int64" />
+    <Property Name="Semeseter_ID" Type="Int64" />
+    <Property Name="Class_Level" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Subject" Relationship="CHUMModel.FK_Classes_0_0" FromRole="Class" ToRole="Subject" />
+    <NavigationProperty Name="Classes_Users_Bridge" Relationship="CHUMModel.FK_Classes_Users_Bridge_1_0" FromRole="Class" ToRole="Classes_Users_Bridge" />
+  </EntityType>
+  <EntityType Name="Classes_Users_Bridge">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Classes_Class_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Users_EQID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Class" Relationship="CHUMModel.FK_Classes_Users_Bridge_1_0" FromRole="Classes_Users_Bridge" ToRole="Class" />
+    <NavigationProperty Name="User" Relationship="CHUMModel.FK_Classes_Users_Bridge_0_0" FromRole="Classes_Users_Bridge" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Prefix" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="Prefix" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Classes" Relationship="CHUMModel.FK_Classes_0_0" FromRole="Subject" ToRole="Class" />
+  </EntityType>
+  <EntityType Name="User_Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Label" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="CHUMModel.FK_Users_0_0" FromRole="User_Type" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Classes_0_0">
+    <End Type="CHUMModel.Subject" Role="Subject" Multiplicity="0..1" />
+    <End Type="CHUMModel.Class" Role="Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Prefix" />
+      </Principal>
+      <Dependent Role="Class">
+        <PropertyRef Name="Subject_Prefix" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Classes_Users_Bridge_1_0">
+    <End Type="CHUMModel.Class" Role="Class" Multiplicity="0..1" />
+    <End Type="CHUMModel.Classes_Users_Bridge" Role="Classes_Users_Bridge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class">
+        <PropertyRef Name="Class_Code" />
+      </Principal>
+      <Dependent Role="Classes_Users_Bridge">
+        <PropertyRef Name="Classes_Class_Code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="EQID" />
+    </Key>
+    <Property Name="EQID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Preferred_First_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Preferred_Last_Name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" />
+    <Property Name="Year_Level" Type="Int64" />
+    <Property Name="MISID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Enrolment_Status" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Enrolled" Type="DateTime" />
+    <Property Name="Exit_Date" Type="DateTime" />
+    <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Indigenous_Status" Type="Int64" />
+    <Property Name="Independent_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="User_Type_ID" Type="Int64" />
+    <NavigationProperty Name="Classes_Users_Bridge" Relationship="CHUMModel.FK_Classes_Users_Bridge_0_0" FromRole="User" ToRole="Classes_Users_Bridge" />
+    <NavigationProperty Name="User_Type" Relationship="CHUMModel.FK_Users_0_0" FromRole="User" ToRole="User_Type" />
+  </EntityType>
+  <Association Name="FK_Classes_Users_Bridge_0_0">
+    <End Type="CHUMModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="CHUMModel.Classes_Users_Bridge" Role="Classes_Users_Bridge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="EQID" />
+      </Principal>
+      <Dependent Role="Classes_Users_Bridge">
+        <PropertyRef Name="Users_EQID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_0_0">
+    <End Type="CHUMModel.User_Type" Role="User_Type" Multiplicity="0..1" />
+    <End Type="CHUMModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="User_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,6 @@
+{
+  "Table": "DAL.Database.Model.User, DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "KeyNames": [
+    "ID"
+  ]
+}
